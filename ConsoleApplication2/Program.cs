@@ -10,9 +10,7 @@ namespace CinemaManagementSystemServer
     {
         static void Main(string[] args)
         {
-            var modelManager = new BusinessModelManager();
-            modelManager.StartServer();
-            
+            var modelManager = new BusinessModelManager();          
         }   
     }
 }

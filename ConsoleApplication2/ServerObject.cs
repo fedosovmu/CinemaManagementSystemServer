@@ -14,6 +14,12 @@ namespace CinemaManagementSystemServer
         static TcpListener tcpListener;
         const int PORT = 42;
         List<ClientObject> clients = new List<ClientObject>();
+        public event Action<String> ClientReciveMessage;
+
+        public void ReciveMessage(String message)
+        {
+            ClientReciveMessage(message);
+        }
 
         protected internal void AddConnection(ClientObject clientObject)
         {
@@ -64,9 +70,9 @@ namespace CinemaManagementSystemServer
         {
             tcpListener.Stop();
 
-            for (int i = 0; i < clients.Count; i++)
+            foreach (var client in clients)
             {
-                clients[i].Close();
+                client.Close();
             }
             Environment.Exit(0);
         }

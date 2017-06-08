@@ -10,9 +10,10 @@ namespace CinemaManagementSystemServer
 {
     class DatabaseManagement
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Roman\Documents\CinemaDatabase.mdf;Integrated Security=True;Connect Timeout=30");
-        //................Movies...............//
+        //SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Roman\Documents\CinemaDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\mocor\OneDrive\Documents\Visual Studio 2017\Projects\CinemaManagementSystemServer\ConsoleApplication2\CinemaDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
+        //................Movies...............//
         public List<string> SelectAllMovies()
         {
             List<string> ListOfMovies = new List<string>();

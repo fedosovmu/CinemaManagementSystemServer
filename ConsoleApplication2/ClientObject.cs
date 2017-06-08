@@ -39,6 +39,7 @@ namespace CinemaManagementSystemServer
                     {
                         var message = GetMessage();
                         Console.WriteLine(ip + ":" + message);
+                        server.ReciveMessage(message);
                         if (message.Contains("#"))                      
                             server.BroadcastMessage(message);
                     }

@@ -4,9 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication2
+namespace CinemaManagementSystemServer
 {
     class Movie
     {
+        public int ID;
+        public string Name;
+        public string Description;
+
+        public Movie (int id, string name, string description)
+        {
+            ID = id;
+            Name = name;
+            Description = description;
+        }
     }
 }
