@@ -10,15 +10,9 @@ namespace CinemaManagementSystemServer
     {
         static void Main(string[] args)
         {
-            DatabaseManagement dbm = new DatabaseManagement();
-            dbm.InsertIntoMovies(2, "Gladiator", "bla");
-            dbm.UpdateMovies(0,"Gladiator","lol");
-
-            //foreach(var b in blabla)
-            //{
-            //    Console.WriteLine(b);
-            //}
-
-        }
+            var modelManager = new BusinessModelManager();
+            modelManager.StartServer();
+            
+        }   
     }
 }

@@ -11,10 +11,6 @@ namespace CinemaManagementSystemServer
     class DatabaseManagement
     {
         SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Roman\Documents\CinemaDatabase.mdf;Integrated Security=True;Connect Timeout=30");
-        public DatabaseManagement()
-        {
-        }
-
         //................Movies...............//
 
         public List<string> SelectAllMovies()
@@ -104,6 +100,7 @@ namespace CinemaManagementSystemServer
             connection.Close();
             return ListOfOccupiedPlaces;
         }
+
         public void InsertIntoShows(int ID, int Movie_ID, string Date, int Hall_ID, int Price)
         {
 
@@ -159,7 +156,6 @@ namespace CinemaManagementSystemServer
         }
 
         //................Tickets...............//
-
         public void SelectFromTickets()
         {
             connection.Open();
@@ -229,6 +225,7 @@ namespace CinemaManagementSystemServer
             sqlAdapt.Fill(sqlSet, "Halls");
             connection.Close();
         }
+
         public void InsertIntoHalls(int ID, int NumberOfPlaces)
         {
 
