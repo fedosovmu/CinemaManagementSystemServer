@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CinemaManagementSystemServer
 {
-    class Movie
+    public class Movie
     {
         public int ID;
         public string Name;

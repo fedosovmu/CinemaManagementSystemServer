@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CinemaManagementSystemServer
 {
-    class ClientObject
+    public class ClientObject
     {
         protected internal string Id { get; private set; }
         protected internal NetworkStream Stream { get; private set; }
@@ -40,8 +40,6 @@ namespace CinemaManagementSystemServer
                         var message = GetMessage();
                         Console.WriteLine(ip + ":" + message);
                         server.ReciveMessage(message);
-                        if (message.Contains("#"))                      
-                            server.BroadcastMessage(message);
                     }
                     catch
                     {

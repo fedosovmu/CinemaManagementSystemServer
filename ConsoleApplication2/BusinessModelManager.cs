@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace CinemaManagementSystemServer
 {
-    class BusinessModelManager
+    public class BusinessModelManager
     {
-        static ServerObject Server;
-        static Thread ListenThread;
+        public static ServerObject Server;
+        public static Thread ListenThread;
         public MassagesParser Parser;
         public DatabaseManagement Database;
 
-        List<Movie> Movies;
-        // Shows
-        // Tickets
-        List<Hall> Halls;
+        public List<Movie> Movies;
+        public List<Hall> Halls;
+        public List<Show> Shows;
+        public List<Ticket> Tickets;
 
         public BusinessModelManager()
         {
@@ -31,13 +31,14 @@ namespace CinemaManagementSystemServer
         {
             Console.WriteLine("Подключение базы данных");
             Database = new DatabaseManagement();
-
-            //Database.InsertIntoMovies(0, "lolko", "ololo");
         }
 
         public void LoadData()
         {
-
+            Console.WriteLine("Загрузка базы данных");
+            var line = Database.SelectAllMovies();
+            foreach (var elem in line)
+                Console.WriteLine(elem);
         }
 
         public void EventsInitialization()
@@ -48,6 +49,7 @@ namespace CinemaManagementSystemServer
 
         public void StartServer()
         {
+            Console.WriteLine("Запуск сервера");
             try
             {
                 Server = new ServerObject();
@@ -59,6 +61,46 @@ namespace CinemaManagementSystemServer
                 Server.Disconnect();
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        public void SendMoviesList()
+        {
+            String line = "MoviesList";
+            foreach(var elem in Movies)
+            {
+                line += "#" + elem.ID + ":" + elem.Name + ":" + elem.Description;
+            }
+            Server.BroadcastMessage(line);
+        }
+
+        public void SendShowsList()
+        {
+            String line = "ShowsList";
+            foreach (var elem in Shows)
+            {
+                line += "#" + elem.ID + ":" + elem.Date + ":" + elem.Movie_ID + ":" + elem.Hall_ID + ":" + elem.Price;
+            }
+            Server.BroadcastMessage(line);
+        }
+
+        public void SendTicketsList()
+        {
+            String line = "TiketsList";
+            foreach (var elem in Tickets)
+            {
+                line += "#" + elem.ID + ":" + elem.Date + ":" + elem.Show_ID + ":" + elem.Place;
+            }
+            Server.BroadcastMessage(line);
+        }
+
+        public void SendHallsList()
+        {
+            String line = "HallsList";
+            foreach (var elem in Halls)
+            {
+                line += "#" + elem.ID + ":" + elem.NumberOfPlaces;
+            }
+            Server.BroadcastMessage(line);
         }
     }
 }

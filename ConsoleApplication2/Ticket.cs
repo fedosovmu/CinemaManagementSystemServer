@@ -6,21 +6,19 @@ using System.Threading.Tasks;
 
 namespace CinemaManagementSystemServer
 {
-    public class Show
+    public class Ticket
     {
         public int ID;
-        public int Movie_ID;
+        public int Show_ID;
         public string Date;
-        public int Hall_ID;
-        public int Price;
+        public int Place;
 
-        public Show(int ID, int Movie_ID, string Date, int Hall_ID, int Price)
+        public Ticket(int ID, int Show_ID, string Date, int Place)
         {
             this.ID = ID;
-            this.Movie_ID = Movie_ID;
+            this.Show_ID = Show_ID;
             this.Date = Date;
-            this.Hall_ID = Hall_ID;
-            this.Price = Price;
+            this.Place = Place;
         }
     }
 }

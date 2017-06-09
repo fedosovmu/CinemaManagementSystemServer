@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CinemaManagementSystemServer
 {
-    class Hall
+    public class Hall
     {
         public int ID;
         public int NumberOfPlaces;

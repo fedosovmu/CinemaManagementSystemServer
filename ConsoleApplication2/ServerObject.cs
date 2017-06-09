@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CinemaManagementSystemServer
 {
-    class ServerObject
+    public class ServerObject
     {
         static TcpListener tcpListener;
         const int PORT = 42;
