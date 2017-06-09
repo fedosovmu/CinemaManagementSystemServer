@@ -20,6 +20,8 @@ namespace CinemaManagementSystemServer
 
             if (cmd == "AddMovie")
             {
+                var movie = new Movie( ModelManager.Movies.Count + 1, com[1], com[2]);
+                ModelManager.Movies.Add(movie);
                 ModelManager.SendMoviesList();
             }
             else if (cmd == "EditMovie")
